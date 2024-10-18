@@ -9,7 +9,6 @@ import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { FloatingLegalFooter } from "@/components/FloatingLegalFooter"
 import { SiteHeader } from "@/components/site-header"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
@@ -27,7 +26,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
-  metadataBase: new URL("https://linkedleads.app"),
+  metadataBase: new URL("https://frostsolutions.pro"),
 }
 
 interface RootLayoutProps {
@@ -52,7 +51,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <SiteHeader />
               <div className="flex-1">{children}</div>
             </div>
-            <TailwindIndicator />
             <FloatingLegalFooter />
           </ThemeProvider>
         </body>

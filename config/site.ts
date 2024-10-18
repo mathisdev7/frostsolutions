@@ -1,20 +1,19 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "LinkedLeads",
-  description:
-    "Get infinite leads from your LinkedIn connections!",
+  name: "FrostSolutions",
+  description: "Need a Custom Solution? Let's Talk!",
   mainNav: [
     {
       title: "Features",
       href: "#features",
     },
     {
-      title: "Pricing",
-      href: "#pricing"
-    }
+      title: "Contact",
+      href: "#contact",
+    },
   ],
   links: {
-    chrome: "/"
+    github: "https://github.com/mathisdev7",
   },
 }

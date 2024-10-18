@@ -1,10 +1,11 @@
 import Link from "next/link"
 
+import { siteConfig } from "@/config/site"
+import { buttonVariants } from "@/components/ui/button"
 import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { buttonVariants } from "@/components/ui/button"
-import { siteConfig } from "@/config/site"
-import { Chrome } from "lucide-react"
+
+import { Icons } from "./icons"
 
 export function SiteHeader() {
   return (
@@ -14,7 +15,7 @@ export function SiteHeader() {
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-1">
             <Link
-              href={siteConfig.links.chrome}
+              href={siteConfig.links.github}
               target="_blank"
               rel="noreferrer"
             >
@@ -24,11 +25,11 @@ export function SiteHeader() {
                   variant: "ghost",
                 })}
               >
-                <Chrome className="h-5 w-5" />
-                <span className="sr-only">Chrome extensions</span>
+                <Icons.gitHub className="h-5 w-5" />
+                <span className="sr-only">Github</span>
               </div>
             </Link>
-          
+
             <ThemeToggle />
           </nav>
         </div>
