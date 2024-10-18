@@ -30,8 +30,22 @@ import { Icons } from "@/components/icons"
 export default function IndexPage() {
   const form = useForm()
 
-  const onSubmit = (data: any) => {
-    console.log(data)
+  const onSubmit = async (data: any) => {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+
+    if (response.ok) {
+      alert("Message sent successfully")
+      console.log("Message sent successfully")
+    } else {
+      alert("Error sending message")
+      console.error("Error sending message")
+    }
   }
   return (
     <div>

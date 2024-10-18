@@ -19,12 +19,11 @@ Welcome to the FrostSolutions landing page! This project showcases a modern and 
 To run this project locally, follow these steps:
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/mathisdev7/frostsolutions.git
    cd frostsolutions
    ```
-
-````
 
 2. **Install dependencies:**
 
@@ -58,4 +57,5 @@ This project is open-source and available under the [MIT License](LICENSE).
 - **Mathis (frost)** - [GitHub Profile](https://github.com/mathisdev7)
 
 ```
-````
+
+```
