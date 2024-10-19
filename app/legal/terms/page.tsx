@@ -1,6 +1,7 @@
-import { Layout, LayoutContent } from "@/src/components/layout"
-import { Typography } from "@/src/components/ui/typography"
 import { MDXRemote } from "next-mdx-remote/rsc"
+
+import { Typography } from "@/components/ui/typography"
+import { Layout, LayoutContent } from "@/components/layout"
 
 const markdown = `# FrostSolutions TERMS OF USE
 
