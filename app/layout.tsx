@@ -1,6 +1,7 @@
 import "@/styles/globals.css"
 
 import { Metadata } from "next"
+import { Analytics } from "@vercel/analytics/react"
 import { GeistMono } from "geist/font/mono"
 import { GeistSans } from "geist/font/sans"
 
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Analytics />
             <div className="relative flex min-h-screen flex-col">
               <SiteHeader />
               <div className="flex-1">{children}</div>
