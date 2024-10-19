@@ -94,9 +94,9 @@ const translations = {
     },
     header: {
       needA: "Besoin d'une",
-      customSolution: "Personnalisé",
-      solution: "Solution?",
-      letTalk: "Discutons",
+      customSolution: "Solution",
+      solution: "Personnalisée?",
+      letTalk: "Discutons!",
       helpingBusinesses: "Aider les entreprises à réussir",
     },
     description:
