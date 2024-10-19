@@ -143,9 +143,9 @@ export default function IndexPage() {
           </CardHeader>
         </Card>
 
-        <Card className="h-full flex-1 pb-3">
+        <Card className="h-full flex-1">
           <CardHeader>
-            <CardTitle>3. Review and Iterate</CardTitle>
+            <CardTitle>3. Review and Iterate with Us</CardTitle>
             <CardDescription>
               Collaborate with us to refine and perfect your application,
               ensuring it exceeds your expectations.
@@ -153,7 +153,7 @@ export default function IndexPage() {
           </CardHeader>
         </Card>
 
-        <Card className="h-full flex-1">
+        <Card className="h-full flex-1 pb-5">
           <CardHeader>
             <CardTitle>4. Launch with Confidence</CardTitle>
             <CardDescription>
