@@ -26,9 +26,11 @@ import { Textarea } from "@/components/ui/textarea"
 import { Typography } from "@/components/ui/typography"
 import { Creator } from "@/components/Creator"
 import { Icons } from "@/components/icons"
+import { useLanguage } from "@/components/language/LanguageContext"
 
 export default function IndexPage() {
   const form = useForm()
+  const { t, language } = useLanguage()
 
   const onSubmit = async (data: any) => {
     const response = await fetch("/api/contact", {
@@ -40,23 +42,24 @@ export default function IndexPage() {
     })
 
     if (response.ok) {
-      alert("Message sent successfully")
-      console.log("Message sent successfully")
+      alert(t("successMessage"))
+      console.log(t("successMessage"))
     } else {
-      alert("Error sending message")
-      console.error("Error sending message")
+      alert(t("errorMessage"))
+      console.error(t("errorMessage"))
     }
   }
+
   return (
     <div>
       <section className="container flex h-full items-center gap-6 pb-8 pt-6 max-lg:flex-col md:py-10">
         <div className="flex flex-1 flex-col items-start gap-4">
           <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl ">
-            Need a{" "}
+            {t("header.needA")}{" "}
             <span className="inline-block bg-foreground px-1 py-2 text-background">
-              Custom
+              {t("header.customSolution")}
             </span>{" "}
-            Solution? <u>Let's Talk</u>!
+            {t("header.solution")} <u>{t("header.letTalk")}</u>
           </h1>
           <div className="flex items-center gap-4 max-lg:flex-col lg:gap-8">
             <div className="flex">
@@ -69,7 +72,7 @@ export default function IndexPage() {
             </div>
             <div className="flex flex-col gap-0.5 text-yellow-500 dark:text-yellow-400">
               <p className="whitespace-nowrap font-extrabold">
-                +500 LinkedIn users trust us
+                {t("header.helpingBusinesses")}
               </p>
               <div className="flex items-center gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -92,10 +95,7 @@ export default function IndexPage() {
           <Card className="relative h-auto w-full max-w-full">
             <CardHeader>
               <CardTitle>FrostSolutions</CardTitle>
-              <CardDescription>
-                Tailor-made web applications designed to elevate your business
-                and streamline your digital presence.
-              </CardDescription>
+              <CardDescription>{t("description")}</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col gap-2">
               <Typography className="font-bold underline">
@@ -116,7 +116,7 @@ export default function IndexPage() {
                 </p>
                 <p className="inline-flex items-center gap-1.5">
                   <Icons.tailwind className="size-5 text-blue-400" />
-                  <span>- Tailwind.css</span>
+                  <span>- Tailwind CSS</span>
                 </p>
               </div>
             </CardContent>
@@ -126,74 +126,65 @@ export default function IndexPage() {
       <section className="container flex h-full gap-6 pb-8 pt-6 max-lg:flex-col md:py-10">
         <Card className="h-full flex-1">
           <CardHeader>
-            <CardTitle>1. Share Your Vision</CardTitle>
+            <CardTitle>{t("cards.shareVision.title")}</CardTitle>
             <CardDescription>
-              Tell us about your project ideas and business goals.
+              {t("cards.shareVision.description")}
             </CardDescription>
           </CardHeader>
         </Card>
 
         <Card className="h-full flex-1">
           <CardHeader>
-            <CardTitle>2. Get a Custom Solution</CardTitle>
+            <CardTitle>{t("cards.getCustomSolution.title")}</CardTitle>
             <CardDescription>
-              We’ll craft a tailor-made web application designed to meet your
-              specific needs.
+              {t("cards.getCustomSolution.description")}
             </CardDescription>
           </CardHeader>
         </Card>
 
         <Card className="h-full flex-1">
           <CardHeader>
-            <CardTitle>3. Review and Iterate with Us</CardTitle>
+            <CardTitle>{t("cards.reviewIterate.title")}</CardTitle>
             <CardDescription>
-              Collaborate with us to refine and perfect your application,
-              ensuring it exceeds your expectations.
+              {t("cards.reviewIterate.description")}
             </CardDescription>
           </CardHeader>
         </Card>
 
-        <Card className="h-full flex-1 pb-5">
+        <Card
+          className={`h-full flex-1 ${language === "en" || language === "es" ? "pb-5" : ""}`}
+        >
           <CardHeader>
-            <CardTitle>4. Launch with Confidence</CardTitle>
+            <CardTitle>{t("cards.launchConfidence.title")}</CardTitle>
             <CardDescription>
-              Once everything is ready, we’ll help you launch your application
-              and ensure smooth operation from day one.
+              {t("cards.launchConfidence.description")}
             </CardDescription>
           </CardHeader>
         </Card>
       </section>
 
       <section className="container flex h-full max-w-2xl flex-col items-center gap-4 pb-8 pt-6 text-center md:py-10">
-        <Typography variant="h3">
-          Every month, businesses struggle with slow, outdated websites...
-        </Typography>
+        <Typography variant="h3">{t("struggles.header")}</Typography>
         <Image
           src="https://img.freepik.com/premium-photo/sad-depressed-businessman-depression-working-inside-modern-office-building-man-business_321831-17531.jpg"
           alt="sad business man"
           width={500}
           height={300}
+          priority
           className="max-w-full lg:max-w-xl rounded-lg"
         />
-        <Typography variant="h3">
-          But they don’t have the time or expertise to improve them.
-        </Typography>
+        <Typography variant="h3">{t("struggles.noTime")}</Typography>
 
         <Typography variant="large">
-          1. Because managing technical details is complex
+          1. {t("struggles.challenges.0")}
         </Typography>
         <Typography variant="large">
-          2. Because scaling a website takes experience
+          2. {t("struggles.challenges.1")}
         </Typography>
 
-        <Typography variant="h3">
-          A high-performing website is a real opportunity to grow your business!
-        </Typography>
+        <Typography variant="h3">{t("struggles.opportunity")}</Typography>
 
-        <Typography variant="h3">
-          By optimizing your site’s performance and user experience, you’ll
-          increase conversions and customer satisfaction.
-        </Typography>
+        <Typography variant="h3">{t("struggles.benefits")}</Typography>
         <Image
           src="https://img.freepik.com/free-photo/businessman-excited-because-achievement-business_1163-5344.jpg"
           alt="Website growth stats"
@@ -202,14 +193,10 @@ export default function IndexPage() {
           className="max-w-full lg:max-w-xl rounded-lg"
         />
         <Typography variant="small" className="italic text-muted-foreground">
-          My clients see a steady growth in traffic and engagement after working
-          with FrostSolutions.
+          {t("struggles.clientGrowth")}
         </Typography>
 
-        <Typography variant="h3">
-          This optimization saves my clients <b>hours of work</b> every month
-          and boosts their revenue by <b>thousands of dollars</b>.
-        </Typography>
+        <Typography variant="h3">{t("struggles.savings")}</Typography>
       </section>
 
       <section
@@ -217,7 +204,7 @@ export default function IndexPage() {
         className="container flex flex-col items-center py-10 px-6"
       >
         <Typography variant="h1" as="h2" className="text-3xl font-bold mb-6">
-          Get in Touch with FrostSolutions
+          {t("contact.title")}
         </Typography>
         <Form {...form}>
           <form
@@ -229,10 +216,12 @@ export default function IndexPage() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-lg font-semibold">Name</FormLabel>
+                  <FormLabel className="text-lg font-semibold">
+                    {t("contact.form.name")}
+                  </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Your Name"
+                      placeholder={t("contact.form.namePlaceholder")}
                       {...field}
                       required
                       className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -248,11 +237,13 @@ export default function IndexPage() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-lg font-semibold">Email</FormLabel>
+                  <FormLabel className="text-lg font-semibold">
+                    {t("contact.form.email")}
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="Your Email"
+                      placeholder={t("contact.form.emailPlaceholder")}
                       {...field}
                       required
                       className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -269,11 +260,11 @@ export default function IndexPage() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-lg font-semibold">
-                    Message
+                    {t("contact.form.message")}
                   </FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Your Message"
+                      placeholder={t("contact.form.messagePlaceholder")}
                       {...field}
                       required
                       className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -288,7 +279,7 @@ export default function IndexPage() {
               type="submit"
               className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200"
             >
-              Send Message
+              {t("contact.form.sendButton")}
             </Button>
           </form>
         </Form>

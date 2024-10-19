@@ -2,7 +2,10 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { useLanguage } from "./language/LanguageContext"
+
 export const Creator = () => {
+  const { t } = useLanguage()
   return (
     <div className="flex w-fit items-center gap-2 rounded-full border bg-gradient-to-r from-cyan-500/20 to-purple-500/20 px-3 py-2  font-bold transition-all hover:brightness-110">
       <Image
@@ -14,7 +17,7 @@ export const Creator = () => {
       />
       <div className="flex flex-col gap-0">
         <p className="text-lg">
-          Made by{" "}
+          {t("creator.madeby")}{" "}
           <Link
             className="font-extrabold text-blue-500 hover:underline"
             href="https://mathisdev.pro"
@@ -28,7 +31,7 @@ export const Creator = () => {
           target="_blank"
           className="text-xs text-muted-foreground transition-colors hover:text-foreground hover:underline"
         >
-          Follow me on GitHub
+          {t("creator.follow")} GitHub
         </Link>
       </div>
     </div>
