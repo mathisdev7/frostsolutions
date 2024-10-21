@@ -1,8 +1,6 @@
 "use client"
 
-import Image from "next/image"
-import { Star } from "lucide-react"
-import { useForm } from "react-hook-form"
+import AOS from "aos"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -28,6 +26,13 @@ import { Creator } from "@/components/Creator"
 import { Icons } from "@/components/icons"
 import { useLanguage } from "@/components/language/LanguageContext"
 
+import "aos/dist/aos.css"
+
+import { useEffect } from "react"
+import Image from "next/image"
+import { Star } from "lucide-react"
+import { useForm } from "react-hook-form"
+
 export default function IndexPage() {
   const form = useForm()
   const { t, language } = useLanguage()
@@ -50,11 +55,20 @@ export default function IndexPage() {
     }
   }
 
+  useEffect(() => {
+    AOS.init({
+      once: true,
+    })
+  }, [])
+
   return (
     <div>
       <section className="container flex h-full items-center gap-6 pb-8 pt-6 max-lg:flex-col md:py-10">
         <div className="flex flex-1 flex-col items-start gap-4">
-          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl ">
+          <h1
+            data-aos="flip-up"
+            className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl"
+          >
             {t("header.needA")}{" "}
             <span className="inline-block bg-foreground px-1 py-2 text-background">
               {t("header.customSolution")}
@@ -64,7 +78,12 @@ export default function IndexPage() {
           <div className="flex items-center gap-4 max-lg:flex-col lg:gap-8">
             <div className="flex">
               {Array.from({ length: 8 }).map((_, i) => (
-                <Avatar key={i} className="-mr-4">
+                <Avatar
+                  data-aos="fade-right"
+                  data-aos-delay={i * 100}
+                  key={i}
+                  className="-mr-4"
+                >
                   <AvatarFallback>{i + 1}</AvatarFallback>
                   <AvatarImage src={`/images/review/${(i % 4) + 1}.png`} />
                 </Avatar>
@@ -76,7 +95,13 @@ export default function IndexPage() {
               </p>
               <div className="flex items-center gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={24} fill="currentColor" />
+                  <Star
+                    data-aos="zoom-in"
+                    data-aos-delay={i * 100}
+                    key={i}
+                    size={24}
+                    fill="currentColor"
+                  />
                 ))}
               </div>
             </div>
@@ -98,33 +123,40 @@ export default function IndexPage() {
               <CardDescription>{t("description")}</CardDescription>
             </CardHeader>
             <CardContent className="flex flex-col gap-2">
-              <Typography className="font-bold underline">
+              <Typography className="font-bold underline text-xl mb-2">
                 Tech Stack
               </Typography>
-              <div className="flex flex-col gap-1">
-                <p className="inline-flex items-center gap-1.5">
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-100 rounded-full px-3 py-1 text-sm font-semibold text-blue-500">
                   <Icons.react className="text-blue-400 size-5" />
-                  <span> - React.js</span>
-                </p>
-                <p className="inline-flex items-center gap-1.5">
+                  React.js
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-100 rounded-full px-3 py-1 text-sm font-semibold text-blue-500">
                   <Icons.typescript className="text-blue-500 size-5" />
-                  <span> - Typescript</span>
-                </p>
-                <p className="inline-flex items-center gap-1.5">
+                  Typescript
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-gray-50 border border-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-black">
                   <Icons.nextjs className="size-5" />
-                  <span> - Next.js</span>
-                </p>
-                <p className="inline-flex items-center gap-1.5">
-                  <Icons.tailwind className="size-5 text-blue-400" />
-                  <span>- Tailwind CSS</span>
-                </p>
+                  Next.js
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-teal-50 border border-teal-100 rounded-full px-3 py-1 text-sm font-semibold text-teal-500">
+                  <Icons.tailwind className="text-blue-400 size-5" />
+                  Tailwind CSS
+                </span>
               </div>
             </CardContent>
           </Card>
         </div>
       </section>
+
       <section className="container flex h-full gap-6 pb-8 pt-6 max-lg:flex-col md:py-10">
-        <Card className="h-full flex-1">
+        <Card
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in-back"
+          data-aos-delay="300"
+          data-aos-offset="0"
+          className="h-full flex-1"
+        >
           <CardHeader>
             <CardTitle>{t("cards.shareVision.title")}</CardTitle>
             <CardDescription>
@@ -133,7 +165,13 @@ export default function IndexPage() {
           </CardHeader>
         </Card>
 
-        <Card className="h-full flex-1">
+        <Card
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in-back"
+          data-aos-delay="500"
+          data-aos-offset="0"
+          className="h-full flex-1"
+        >
           <CardHeader>
             <CardTitle>{t("cards.getCustomSolution.title")}</CardTitle>
             <CardDescription>
@@ -142,7 +180,13 @@ export default function IndexPage() {
           </CardHeader>
         </Card>
 
-        <Card className="h-full flex-1">
+        <Card
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in-back"
+          data-aos-delay="700"
+          data-aos-offset="0"
+          className="h-full flex-1"
+        >
           <CardHeader>
             <CardTitle>{t("cards.reviewIterate.title")}</CardTitle>
             <CardDescription>
@@ -153,6 +197,10 @@ export default function IndexPage() {
 
         <Card
           className={`h-full flex-1 ${language === "en" || language === "es" ? "pb-5" : ""}`}
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in-back"
+          data-aos-delay="900"
+          data-aos-offset="0"
         >
           <CardHeader>
             <CardTitle>{t("cards.launchConfidence.title")}</CardTitle>
@@ -172,6 +220,7 @@ export default function IndexPage() {
           height={300}
           priority
           className="max-w-full lg:max-w-xl rounded-lg"
+          data-aos="fade-left"
         />
         <Typography variant="h3">{t("struggles.noTime")}</Typography>
 
@@ -191,21 +240,13 @@ export default function IndexPage() {
           width={500}
           height={300}
           className="max-w-full lg:max-w-xl rounded-lg"
+          data-aos="fade-right"
         />
-        <Typography variant="small" className="italic text-muted-foreground">
-          {t("struggles.clientGrowth")}
-        </Typography>
-
-        <Typography variant="h3">{t("struggles.savings")}</Typography>
+        <Typography variant="small">{t("struggles.clientGrowth")}</Typography>
       </section>
 
-      <section
-        id="contact"
-        className="container flex flex-col items-center py-10 px-6"
-      >
-        <Typography variant="h1" as="h2" className="text-3xl font-bold mb-6">
-          {t("contact.title")}
-        </Typography>
+      <section className="container flex flex-col items-center pb-8 pt-6 max-lg:flex-col md:py-10">
+        <Typography variant="h3">{t("contact.title")}</Typography>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -215,69 +256,46 @@ export default function IndexPage() {
               control={form.control}
               name="name"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-lg font-semibold">
-                    {t("contact.form.name")}
-                  </FormLabel>
+                <FormItem data-aos="fade-up" data-aos-delay="200">
+                  <FormLabel>{t("contact.form.name")}</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder={t("contact.form.namePlaceholder")}
-                      {...field}
-                      required
-                      className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
+                    <Input {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-
             <FormField
               control={form.control}
               name="email"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-lg font-semibold">
-                    {t("contact.form.email")}
-                  </FormLabel>
+                <FormItem data-aos="fade-up" data-aos-delay="400">
+                  <FormLabel>{t("contact.form.email")}</FormLabel>
                   <FormControl>
-                    <Input
-                      type="email"
-                      placeholder={t("contact.form.emailPlaceholder")}
-                      {...field}
-                      required
-                      className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
+                    <Input {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-
             <FormField
               control={form.control}
               name="message"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-lg font-semibold">
-                    {t("contact.form.message")}
-                  </FormLabel>
+                <FormItem data-aos="fade-up" data-aos-delay="600">
+                  <FormLabel>{t("contact.form.message")}</FormLabel>
                   <FormControl>
-                    <Textarea
-                      placeholder={t("contact.form.messagePlaceholder")}
-                      {...field}
-                      required
-                      className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
+                    <Textarea {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-
             <Button
               type="submit"
               className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200"
+              data-aos="zoom-in"
+              data-aos-delay="800"
             >
               {t("contact.form.sendButton")}
             </Button>
@@ -285,9 +303,9 @@ export default function IndexPage() {
         </Form>
       </section>
 
-      <footer className="container flex items-center justify-center py-20">
+      <section className="container flex h-full max-w-2xl flex-col items-center gap-4 pb-8 pt-6 text-center md:py-10">
         <Creator />
-      </footer>
+      </section>
     </div>
   )
 }

@@ -2,6 +2,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { Icons } from "./icons"
 import { useLanguage } from "./language/LanguageContext"
 
 export const Creator = () => {
@@ -29,8 +30,9 @@ export const Creator = () => {
         <Link
           href="https://github.com/mathisdev7"
           target="_blank"
-          className="text-xs text-muted-foreground transition-colors hover:text-foreground hover:underline"
+          className="text-xs text-muted-foreground transition-colors hover:text-foreground hover:underline flex flex-row items-center justify-start gap-1"
         >
+          <Icons.gitHub className="size-5 mr-1 dark:text-white text-black" />
           {t("creator.follow")} GitHub
         </Link>
       </div>

@@ -55,7 +55,3 @@ This project is open-source and available under the [MIT License](LICENSE).
 ## Author
 
 - **Mathis (frost)** - [GitHub Profile](https://github.com/mathisdev7)
-
-```
-
-```
