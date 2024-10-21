@@ -1,16 +1,19 @@
-"use client"
+"use client";
 
-import AOS from "aos"
+import AOS from "aos";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Creator } from "@/components/Creator";
+import { Icons } from "@/components/icons";
+import { useLanguage } from "@/components/language/LanguageContext";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -18,24 +21,21 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Typography } from "@/components/ui/typography"
-import { Creator } from "@/components/Creator"
-import { Icons } from "@/components/icons"
-import { useLanguage } from "@/components/language/LanguageContext"
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Typography } from "@/components/ui/typography";
 
-import "aos/dist/aos.css"
+import "aos/dist/aos.css";
 
-import { useEffect } from "react"
-import Image from "next/image"
-import { Star } from "lucide-react"
-import { useForm } from "react-hook-form"
+import { Star } from "lucide-react";
+import Image from "next/image";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 
 export default function IndexPage() {
-  const form = useForm()
-  const { t, language } = useLanguage()
+  const form = useForm();
+  const { t, language } = useLanguage();
 
   const onSubmit = async (data: any) => {
     const response = await fetch("/api/contact", {
@@ -44,22 +44,22 @@ export default function IndexPage() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    })
+    });
 
     if (response.ok) {
-      alert(t("successMessage"))
-      console.log(t("successMessage"))
+      alert(t("successMessage"));
+      console.log(t("successMessage"));
     } else {
-      alert(t("errorMessage"))
-      console.error(t("errorMessage"))
+      alert(t("errorMessage"));
+      console.error(t("errorMessage"));
     }
-  }
+  };
 
   useEffect(() => {
     AOS.init({
       once: true,
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <div>
@@ -307,5 +307,5 @@ export default function IndexPage() {
         <Creator />
       </section>
     </div>
-  )
+  );
 }
